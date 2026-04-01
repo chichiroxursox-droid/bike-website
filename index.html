@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POISE — Balance Bike</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-brand">POISE</div>
+      <div class="loader-sub">ENGINEERING DATA LOADING</div>
+      <div class="loader-bar-wrap">
+        <div id="loader-bar"></div>
+      </div>
+      <div id="loader-percent">0%</div>
+    </div>
+  </div>
+
+  <!-- RAINBOW BORDER (CSS overlay, triggers on load) -->
+  <div id="rainbow-border"></div>
+
+  <!-- FIXED HEADER -->
+  <header class="site-header">
+    <div class="header-logo">POISE</div>
+    <nav class="header-nav">
+      <a href="#specs">SPECS</a>
+      <a href="#cta" class="nav-cta">ORDER</a>
+    </nav>
+  </header>
+
+  <!-- CHAPTER INDICATOR -->
+  <div id="chapter-indicator">
+    <span id="chapter-num">001</span>
+    <span class="chapter-sep"> / </span>
+    <span id="chapter-name">IDENTITY</span>
+  </div>
+
+  <!-- PROGRESS SPINE -->
+  <div id="progress-spine"><div id="progress-fill"></div></div>
+
+  <!-- THERMAL BADGE -->
+  <div id="thermal-badge">THERMAL VIEW ACTIVE</div>
+
+  <!-- HERO STANDALONE (100vh, shown before canvas) -->
+  <section id="hero" class="hero-standalone">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <span class="hero-label">001 / POISE BALANCE BIKE</span>
+      <h1 class="hero-heading">
+        <span class="hero-word">NOT</span>
+        <span class="hero-word">JUST</span>
+        <span class="hero-word hero-word-accent">A BIKE.</span>
+      </h1>
+      <p class="hero-tagline">The first vehicle they'll ever love.</p>
+      <div class="hero-spec-row">
+        <span>ALUMINUM FRAME</span>
+        <span class="spec-dot">·</span>
+        <span>12″ AIR TIRES</span>
+        <span class="spec-dot">·</span>
+        <span>3.2 KG</span>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span class="scroll-hint-text">SCROLL</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- CANVAS LAYERS (fixed, full viewport) -->
+  <div id="canvas-wrap">
+    <canvas id="main-canvas"></canvas>
+    <canvas id="thermal-canvas"></canvas>
+  </div>
+
+  <!-- DARK OVERLAY (for stats section) -->
+  <div id="dark-overlay"></div>
+
+
+
+  <!-- HORIZONTAL MARQUEE (fixed) -->
+  <div class="marquee-wrap" id="marquee">
+    <span class="marquee-text">BALANCE · BEFORE · SPEED · ALUMINUM FRAME · 12″ AIR TIRES · EVA FOOTRESTS · CHROME HANDLEBARS · QUICK-RELEASE SEAT · BALANCE · BEFORE · SPEED · ALUMINUM FRAME · 12″ AIR TIRES · EVA FOOTRESTS · CHROME HANDLEBARS ·&nbsp;</span>
+  </div>
+
+  <!-- MAIN SCROLL CONTAINER -->
+  <div id="scroll-container">
+
+    <!-- SECTION 1: IDENTITY -->
+    <section class="scroll-section align-left" id="section-identity"
+             data-enter="22" data-leave="34" data-animation="slide-left"
+             data-chapter-num="001" data-chapter-name="IDENTITY">
+      <div class="section-inner">
+        <span class="section-label">001 / IDENTITY</span>
+        <h2 class="section-heading">ENGINEERED<br>FOR TINY<br>EXPLORERS</h2>
+        <p class="section-body">No pedals. No training wheels.<br>No limits. Balance is the only<br>curriculum that matters.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: ENGINEERING -->
+    <section class="scroll-section align-right" id="section-engineering"
+             data-enter="36" data-leave="50" data-animation="slide-right"
+             data-chapter-num="002" data-chapter-name="ENGINEERING">
+      <div class="section-inner">
+        <span class="section-label">002 / ENGINEERING</span>
+        <h2 class="section-heading">EVERY<br>COMPONENT.<br>OBSESSED<br>OVER.</h2>
+        <p class="section-body">We took a children's toy and<br>treated it like aerospace.<br>Nobody asked us to.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THERMAL TRIGGER (no visible text content — just triggers shader) -->
+    <section class="scroll-section" id="section-thermal"
+             data-enter="50" data-leave="62" data-animation="fade-up"
+             data-chapter-num="003" data-chapter-name="THERMAL">
+      <div class="section-inner thermal-copy">
+        <span class="section-label">003 / THERMAL ANALYSIS</span>
+        <h2 class="section-heading">THE BODY<br>KNOWS<br>BEFORE<br>THE MIND.</h2>
+        <p class="section-body">Thermal imaging confirms what<br>parents already suspected:<br>this thing gets grabbed<br>everywhere.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4: HORIZONTAL SCROLL (GSAP pin) -->
+    <div id="section-horizontal" data-chapter-num="004" data-chapter-name="COMPONENTS">
+      <div class="h-container">
+        <div class="h-track">
+
+          <div class="h-panel">
+            <div class="h-panel-inner">
+              <div class="h-component-num">01</div>
+              <div class="h-component-name">CHROME<br>HANDLEBARS</div>
+              <div class="h-component-detail">≈ 380mm span</div>
+            </div>
+          </div>
+
+          <div class="h-panel">
+            <div class="h-panel-inner">
+              <div class="h-component-num">02</div>
+              <div class="h-component-name">ALUMINUM<br>FRAME</div>
+              <div class="h-component-detail">≈ 0.82 kg</div>
+            </div>
+          </div>
+
+          <div class="h-panel">
+            <div class="h-panel-inner">
+              <div class="h-component-num">03</div>
+              <div class="h-component-name">12-INCH<br>AIR TIRES</div>
+              <div class="h-component-detail">3.0 bar max</div>
+            </div>
+          </div>
+
+          <div class="h-panel">
+            <div class="h-panel-inner">
+              <div class="h-component-num">04</div>
+              <div class="h-component-name">EVA<br>FOOTRESTS</div>
+              <div class="h-component-detail">≈ 40 Shore A</div>
+            </div>
+          </div>
+
+          <div class="h-panel">
+            <div class="h-panel-inner">
+              <div class="h-component-num">05</div>
+              <div class="h-component-name">QUICK-RELEASE<br>SEAT</div>
+              <div class="h-component-detail">28–38 cm range</div>
+            </div>
+          </div>
+
+        </div><!-- /.h-track -->
+      </div><!-- /.h-container -->
+    </div><!-- /#section-horizontal -->
+
+    <!-- SECTION 5: SPECS / STATS -->
+    <section class="scroll-section section-stats" id="section-specs"
+             data-enter="72" data-leave="84" data-animation="stagger-up"
+             data-chapter-num="005" data-chapter-name="SPECS">
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-number" data-value="3.2" data-decimals="1">0</span>
+          <span class="stat-suffix">kg</span>
+          <span class="stat-label">Total Weight</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-value="12" data-decimals="0">0</span>
+          <span class="stat-suffix">"</span>
+          <span class="stat-label">Pneumatic Tires</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-value="30" data-decimals="0">0</span>
+          <span class="stat-suffix">+</span>
+          <span class="stat-label">Seat Positions</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-value="2" data-decimals="0">0</span>
+          <span class="stat-suffix">–5 yrs</span>
+          <span class="stat-label">Age Range</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: PHILOSOPHY -->
+    <section class="scroll-section align-left" id="section-philosophy"
+             data-enter="84" data-leave="96" data-animation="clip-reveal"
+             data-chapter-num="006" data-chapter-name="PHILOSOPHY">
+      <div class="section-inner">
+        <span class="section-label">006 / PHILOSOPHY</span>
+        <h2 class="section-heading">BALANCE<br>BEFORE<br>SPEED.</h2>
+        <p class="section-body section-italic">The lesson that never leaves.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 7: CTA (persists) -->
+    <section class="scroll-section section-cta" id="section-cta"
+             data-enter="90" data-leave="100" data-animation="scale-up" data-persist="true">
+      <div class="cta-inner">
+        <span class="section-label">007 / ORDER</span>
+        <h2 class="cta-heading">GIVE THEM<br>THEIR FIRST YES.</h2>
+        <a href="#" class="cta-button">ORDER NOW ↗</a>
+        <p class="cta-note">Free shipping · 30-day returns · 2-year warranty</p>
+      </div>
+    </section>
+
+  </div><!-- /#scroll-container -->
+
+  <!-- CDN SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="js/thermal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
